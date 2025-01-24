@@ -65,12 +65,12 @@ def main():
     board = [['0' for i in range(n)] for j in range(n)]
     for i in const_pieces:
         mark_tiles(i[0], i[1], board)
-    f = open('output2.txt', 'w')
+    f = open('output.txt', 'w')
     cache = set()
     print(f'Размер доски: {n}, Нужно поставить фигур: {l}, Уже стоят фигур: {k}')
     place_figure(0, 0, l, [], const_pieces, board, cache)
     f.close()
-    f = open('output2.txt', 'r+')
+    f = open('output.txt', 'r+')
     a = f.readline()
     if a == '':
         f.write('no solution')
