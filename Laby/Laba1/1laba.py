@@ -1,3 +1,8 @@
+def read_input(filename: str) -> tuple:
+    with open(filename, 'r') as f:
+        inpt = list(map(int, f.readline().strip().split()))
+        return inpt
+
 def solution(n: int, s: int, seq: list, cur_sum: int, cur_eq="", idx = 0) -> str|None:
     if idx == len(seq):
         if cur_sum == s:
@@ -12,11 +17,6 @@ def solution(n: int, s: int, seq: list, cur_sum: int, cur_eq="", idx = 0) -> str
     next_minus = solution(n, s, seq, cur_sum-seq[idx], cur_eq+f"-{seq[idx]}", idx+1)
     if next_minus is not None:
         return next_minus
-
-def read_input(filename: str) -> tuple:
-    with open(filename, 'r') as f:
-        inpt = list(map(int, f.readline().strip().split()))
-        return inpt
 
 def main():
     input = read_input('input.txt')
