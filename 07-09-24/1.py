@@ -1,22 +1,18 @@
 numb = int(input("Input: "))
 copyNumb = numb
 invNumb = 0
-first_dig = 0
-isOtr = False
-if numb < 0:
-    isOtr = True
-    numb = numb * -1
+first_dig = numb % 10
+
+print(numb)
 
 while(True):
     second_dig = numb % 10
     numb = numb // 10
-    invNumb = invNumb * 10 + second_dig
-
-    if numb == 0:
+    first_dig = first_dig * 10 + second_dig
+    if first_dig == copyNumb:
+        #print("True")
         break
-if (invNumb < 127 or invNumb > -128) and isOtr == False:
-    print("Output: ", invNumb)
-if invNumb < 127 or invNumb > -128:
-    print("Output: ", invNumb * -1)
-else:
-    print("No solution")
+    elif first_dig > copyNumb:
+        #print("False")
+        break
+print(first_dig)
