@@ -1,14 +1,18 @@
-s = input("Input: ")
-s = s.lower() + ' '
-word = ''
-lists = []
-for c in s:
-    if c == ' ' or c == '':
-        lists.append(word + ' ')
-        word = ''
-    else:
-        word += c
+numb = int(input("Input: "))
+copyNumb = numb
+invNumb = 0
+first_dig = numb % 10
 
-lists.reverse()
-outputs = ''.join(lists)
-print(outputs.capitalize())
+print(numb)
+
+while(True):
+    second_dig = numb % 10
+    numb = numb // 10
+    first_dig = first_dig * 10 + second_dig
+    if first_dig == copyNumb:
+        #print("True")
+        break
+    elif first_dig > copyNumb:
+        #print("False")
+        break
+print(first_dig)
