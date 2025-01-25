@@ -1,0 +1,31 @@
+def f(x, y, n, m) -> int:
+    count = 0
+    if x < n - 1:
+        if d.get((x, y)) != None:
+            count += d.get((x, y))
+        else:
+            count += f(x+1,y,n,m)
+    if y < m - 1:
+        if d.get((x, y)) != None:
+            count += d.get((x, y))
+        else:
+            count += f(x,y+1,n,m)
+    if x == n or y == m:
+        d[(x - 1, y - 1)] = 1
+        count += 1
+        return count
+    return count
+
+n = 3
+m = 3
+table = []
+for i in range(n):
+    table.append([])
+    for j in range(m):
+        table[i].append(0)
+for i in table:
+    print(i)
+d = {(i, j):None for i in range(n) for j in range(m)}
+d[n - 1, m - 1] = 1
+print(d)
+print(f(0,0,3,3))
