@@ -31,18 +31,6 @@ def place_remove_piece(x: int, y: int, board: list, place: bool):
     else:
         board[x][y] = 0
 
-def can_be_placed(x: int, y: int, board) -> bool:
-    moves = ((0, -1), (0, 1), (3, 0), (-3, 0), (0, -3), (0, 3), (-1, -2), (-1, 2), (-1, 0), (1, -2), (1, 2), (1, 0), (-2, -1), (-2, 1), (2, -1), (2, 1))
-    for i in moves:
-        if x + i[0] < 0 or y + i[1] < 0 or x + i[0] > n - 1 or y + i[1] > n - 1:
-            continue
-        else:
-            if board[x+i[0]][y+i[1]] == -1 or board[x][y] == -1 or board[x][y] > 0:
-                return False
-            else:
-                continue
-    return True
-
 def place_figure(x: int, y: int, l: int, cur_solution: list, placed_figures: list, board: list, cache: set):
     if l == 0:
         cur_solution.sort()
@@ -57,7 +45,7 @@ def place_figure(x: int, y: int, l: int, cur_solution: list, placed_figures: lis
         return None
     for i in range(x, n):
         for j in range(y if i == x else 0, n):
-            if can_be_placed(i, j, board):
+            if board[i][j] == 0:
                 cur_solution.append((i, j))
                 place_remove_piece(i, j, board, True)
                 place_figure(i, j, l - 1, cur_solution, placed_figures, board, cache)
