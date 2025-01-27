@@ -37,7 +37,7 @@ def can_be_placed(x: int, y: int, board) -> bool:
         if x + i[0] < 0 or y + i[1] < 0 or x + i[0] > n - 1 or y + i[1] > n - 1:
             continue
         else:
-            if board[x + i[0]][y+i[1]] == -1 or board[x][y] == -1:
+            if board[x+i[0]][y+i[1]] == -1 or board[x][y] == -1 or board[x][y] > 0:
                 return False
             else:
                 continue
