@@ -46,12 +46,14 @@ class ShowBoardWidget(QDialog):
         else:
             for i in solution:
                 self.tiles[i[0]][i[1]].setChecked(True)
-                self.tiles[i[0]][i[1]].setText("-1")
+                self.tiles[i[0]][i[1]].setText("-2")
                 moves = c1.place_piece(i[0], i[1])
                 c1.remove_piece(i[0], i[1])
                 for j in moves:
                     self.tiles[j[0]][j[1]].setDisabled(True)
                     self.tiles[j[0]][j[1]].setText("*")
+            for i in self.placed_pieces:
+                self.tiles[i[0]][i[1]].setText("-1")
 
         #print(solution)
         # compute and write to file button
@@ -87,9 +89,9 @@ class ChessWorker(QRunnable):
 
     @Slot()
     def run(self):
-        print("Thread Starts")
+        #print("Thread Starts")
         self.chess.compute(self.amount)
-        print("Thread Stops")
+        #print("Thread Stops")
         dlg = QDialog()
         dlg.setFixedSize(300, 70)
         lb = QLabel("Writing to the file is done")
