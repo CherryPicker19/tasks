@@ -71,7 +71,7 @@ class PlacePiecesWidget(QDialog):
             return None
         #print(self.placed_pieces)
         #print(self.tiles_under_attack)
-        self.chess.print_board()
+        #self.chess.print_board()
 
     def accept_bt_clicked(self):
         self.parent.tiles_under_attack = self.tiles_under_attack
